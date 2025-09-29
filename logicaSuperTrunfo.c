@@ -1,43 +1,70 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 2 - Comparação das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de comparação de cartas de cidades. 
-// Siga os comentários para implementar cada parte do desafio.
-
 int main() {
-    // Definição das variáveis para armazenar as propriedades das cidades
-    // Você pode utilizar o código do primeiro desafio
+    // Estrutura simples das cartas
+    char nome1[20] = "Brasil";
+    char nome2[20] = "Argentina";
 
-    
-    // Cadastro das Cartas:
-    // Implemente a lógica para solicitar ao usuário que insira os dados das cidades
-    // utilizando a função scanf para capturar as entradas.
-    // utilize o código do primeiro desafio
+    int populacao1 = 213, area1 = 8516, pib1 = 22000, dens1 = 25;
+    int populacao2 = 45, area2 = 2780, pib2 = 5000, dens2 = 16;
 
-    // Exemplo:
-    // printf("Digite o código da cidade: ");
-    // scanf("%s", codigo);
-    // 
-    // (Repita para cada propriedade)
+    int escolha1, escolha2;
+    int valor1_c1, valor1_c2, valor2_c1, valor2_c2;
+    int soma1, soma2;
 
-    // Comparação de Cartas:
-    // Desenvolva a lógica de comparação entre duas cartas.
-    // Utilize estruturas de decisão como if, if-else para comparar atributos como população, área, PIB, etc.
+    printf("=== SUPER TRUNFO ===\n");
+    printf("Carta 1: %s\n", nome1);
+    printf("Carta 2: %s\n", nome2);
 
-    // Exemplo:
-    // if (populacaoA > populacaoB) {
-    //     printf("Cidade 1 tem maior população.\n");
-    // } else {
-    //     printf("Cidade 2 tem maior população.\n");
-    // }
+    // Primeiro atributo
+    printf("\nEscolha o primeiro atributo:\n");
+    printf("1 - População\n2 - Área\n3 - PIB\n4 - Densidade Demográfica\n");
+    scanf("%d", &escolha1);
 
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
+    // Segundo atributo (não pode repetir)
+    printf("\nEscolha o segundo atributo:\n");
+    if (escolha1 != 1) printf("1 - População\n");
+    if (escolha1 != 2) printf("2 - Área\n");
+    if (escolha1 != 3) printf("3 - PIB\n");
+    if (escolha1 != 4) printf("4 - Densidade Demográfica\n");
+    scanf("%d", &escolha2);
 
-    // Exemplo:
-    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
+    if (escolha1 == escolha2 || escolha1 < 1 || escolha1 > 4 || escolha2 < 1 || escolha2 > 4) {
+        printf("\nOpção inválida! Reinicie o jogo.\n");
+        return 0;
+    }
+
+    // Pega valores do primeiro atributo
+    switch (escolha1) {
+        case 1: valor1_c1 = populacao1; valor1_c2 = populacao2; break;
+        case 2: valor1_c1 = area1; valor1_c2 = area2; break;
+        case 3: valor1_c1 = pib1; valor1_c2 = pib2; break;
+        case 4: valor1_c1 = dens1; valor1_c2 = dens2; break;
+    }
+
+    // Pega valores do segundo atributo
+    switch (escolha2) {
+        case 1: valor2_c1 = populacao1; valor2_c2 = populacao2; break;
+        case 2: valor2_c1 = area1; valor2_c2 = area2; break;
+        case 3: valor2_c1 = pib1; valor2_c2 = pib2; break;
+        case 4: valor2_c1 = dens1; valor2_c2 = dens2; break;
+    }
+
+    // Calcula soma
+    soma1 = valor1_c1 + valor2_c1;
+    soma2 = valor1_c2 + valor2_c2;
+
+    // Mostra resultado
+    printf("\n=== RESULTADO ===\n");
+    printf("%s: Atributo1 = %d | Atributo2 = %d | Soma = %d\n", nome1, valor1_c1, valor2_c1, soma1);
+    printf("%s: Atributo1 = %d | Atributo2 = %d | Soma = %d\n", nome2, valor1_c2, valor2_c2, soma2);
+
+    if (soma1 > soma2)
+        printf("\nVencedor: %s!\n", nome1);
+    else if (soma2 > soma1)
+        printf("\nVencedor: %s!\n", nome2);
+    else
+        printf("\nEmpate!\n");
 
     return 0;
 }
